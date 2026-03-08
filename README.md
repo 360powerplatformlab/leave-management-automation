@@ -1,5 +1,5 @@
 # leave-management-automation
-**Problem Statement**
+***Problem Statement***
 
 Many organizations manage employee leave requests using manual processes such as email submissions or spreadsheet tracking. These approaches create several operational challenges, including:
   - Lack of centralized visibility of leave requests
@@ -12,7 +12,7 @@ Additionally, HR teams often struggle to ensure that employees do not exceed the
 
 To address these issues, an automated and centralized leave management system was required to streamline request submission, validation, approval, and leave balance management.
 
-**Business Requirements**
+***Business Requirements***
 
 The system needed to satisfy the following operational requirements:
   - Employees must be able to submit leave requests through a user-friendly interface.
@@ -24,7 +24,7 @@ The system needed to satisfy the following operational requirements:
   - All leave records must be stored centrally and accessible for reporting and auditing.
   - HR and administrators must have visibility into leave requests and balances.
 
-**Solution Architecture**
+***Solution Architecture***
 
 The solution was built using Microsoft Power Platform components integrated with SharePoint and Excel Online.
 
@@ -55,7 +55,7 @@ Two Excel files are maintained:
 Power Automate
   - Handles the workflow automation, validation logic, and leave balance updates.
 
-**Power Automate Logic (high-level)**
+***Power Automate Logic (high-level)***
 
 The Power Automate workflow performs the following steps:
 
@@ -87,7 +87,7 @@ Post-Approval Processing
 Notification
   - Notify the employee of the approval or rejection outcome.
 
-**Security & Permissions**
+***Security & Permissions***
 Security and access control were implemented using Microsoft 365 best practices:
 
 SharePoint Permissions
@@ -103,7 +103,7 @@ Power Automate Connections
 Role-Based Access
   - Managers can only approve requests for employees within their reporting structure.
 
-****Outcome / Benefits****
+***Outcome / Benefits***
 
 The automation delivered several measurable improvements:
 
