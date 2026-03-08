@@ -103,7 +103,8 @@ Power Automate Connections
 Role-Based Access
   - Managers can only approve requests for employees within their reporting structure.
 
-**Outcome / Benefits**
+****Outcome / Benefits****
+
 The automation delivered several measurable improvements:
 
 Operational Efficiency
