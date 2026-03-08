@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leave Management Automation Project</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+    line-height: 1.6;
+    background-color: #f9fafc;
+    color: #333;
+}
+
+h1 {
+    color: #0078D4;
+    border-bottom: 3px solid #0078D4;
+    padding-bottom: 10px;
+}
+
+h2 {
+    margin-top: 40px;
+    color: #1f4e79;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+ul {
+    margin-left: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Leave Management Automation</h1>
+<p><strong>Technologies:</strong> Power Apps | SharePoint | Power Automate | Excel Online</p>
+
+<div class="card">
+<h2>Problem Statement</h2>
+
+<p>Many organizations manage employee leave requests using manual processes such as email submissions or spreadsheet tracking. These approaches create several operational challenges, including:</p>
+
+<ul>
+<li>Lack of centralized visibility of leave requests</li>
+<li>Errors in calculating leave days due to weekends and public holidays</li>
+<li>Manual tracking of employee leave balances</li>
+<li>Delayed approval cycles</li>
+<li>Risk of inaccurate or outdated leave records</li>
+</ul>
+
+<p>Additionally, HR teams often struggle to ensure that employees do not exceed their available leave entitlement because balances are updated manually.</p>
+
+<p>To address these issues, an automated and centralized leave management system was required to streamline request submission, validation, approval, and leave balance management.</p>
+</div>
+
+<div class="card">
+<h2>Business Requirements</h2>
+
+<ul>
+<li>Employees must be able to submit leave requests through a user-friendly interface.</li>
+<li>The system must calculate the number of leave days automatically based on the selected start and end dates.</li>
+<li>Weekends and public holidays must be excluded from the leave duration calculation.</li>
+<li>The system must verify the employee's available leave balance before approval.</li>
+<li>Leave requests should follow an approval workflow involving designated managers.</li>
+<li>Once a request is approved, the approved leave days must automatically be deducted from the employee’s leave balance.</li>
+<li>All leave records must be stored centrally and accessible for reporting and auditing.</li>
+<li>HR and administrators must have visibility into leave requests and balances.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Solution Architecture</h2>
+
+<p>The solution was built using Microsoft Power Platform components integrated with SharePoint and Excel Online.</p>
+
+<h3>Power Apps</h3>
+<ul>
+<li>Provides the user interface for employees to submit leave requests.</li>
+<li>Captures leave details such as:</li>
+<ul>
+<li>Employee information</li>
+<li>Leave type</li>
+<li>Start date</li>
+<li>End date</li>
+<li>Reason for leave</li>
+</ul>
+</ul>
+
+<h3>SharePoint</h3>
+<ul>
+<li>Stores the Leave Request list, which acts as the primary data repository for submitted requests.</li>
+<li>Provides structured data storage and integration with Power Automate.</li>
+</ul>
+
+<h3>Excel Online (SharePoint Document Library)</h3>
+<p>Two Excel files are maintained:</p>
+
+<ul>
+<li><strong>Public Holiday Calendar</strong> – Stores official holidays used to exclude non-working days.</li>
+<li><strong>Employee Leave Balance</strong> – Contains employee leave entitlements and remaining balances.</li>
+</ul>
+
+<h3>Power Automate</h3>
+<ul>
+<li>Handles the workflow automation, validation logic, and leave balance updates.</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h2>Power Automate Logic (High-Level)</h2>
+
+<h3>Trigger</h3>
+<p>The flow is triggered when a new leave request is submitted via the SharePoint list.</p>
+
+<h3>Retrieve Leave Request Data</h3>
+<p>Extract employee information, start date, and end date from the request.</p>
+
+<h3>Calculate Leave Duration</h3>
+<ul>
+<li>Determine the total number of days between the start and end dates.</li>
+<li>Exclude:</li>
+<ul>
+<li>Weekends</li>
+<li>Public holidays retrieved from the holiday Excel file</li>
+</ul>
+</ul>
+
+<h3>Check Leave Balance</h3>
+<ul>
+<li>Query the Employee Leave Balance Excel table stored in SharePoint.</li>
+<li>Validate whether the employee has sufficient leave entitlement.</li>
+</ul>
+
+<h3>Approval Process</h3>
+<p>If the balance is sufficient, the flow sends an approval request to the designated manager.</p>
+
+<h3>Post-Approval Processing</h3>
+<ul>
+<li>Deduct the approved leave days from the employee’s leave balance.</li>
+<li>Update the Excel leave balance file.</li>
+<li>Update the leave request status in SharePoint.</li>
+</ul>
+
+<h3>Notification</h3>
+<p>Notify the employee of the approval or rejection outcome.</p>
+
+</div>
+
+<div class="card">
+<h2>Security & Permissions</h2>
+
+<h3>SharePoint Permissions</h3>
+<ul>
+<li>Employees can create leave requests but cannot modify approval fields.</li>
+<li>HR and administrators have full access to the leave management lists.</li>
+</ul>
+
+<h3>Excel File Access</h3>
+<ul>
+<li>The leave balance and public holiday files are stored in a secure SharePoint document library.</li>
+<li>Access is restricted to HR administrators and the automation service account.</li>
+</ul>
+
+<h3>Power Automate Connections</h3>
+<p>The workflow runs under controlled credentials to ensure secure access to SharePoint and Excel resources.</p>
+
+<h3>Role-Based Access</h3>
+<p>Managers can only approve requests for employees within their reporting structure.</p>
+
+</div>
+
+<div class="card">
+<h2>Outcome / Benefits</h2>
+
+<h3>Operational Efficiency</h3>
+<p>Eliminated manual leave calculations and spreadsheet updates.</p>
+
+<h3>Accurate Leave Calculations</h3>
+<p>Automatically excludes weekends and public holidays, ensuring correct leave duration.</p>
+
+<h3>Improved Approval Speed</h3>
+<p>Automated approval notifications significantly reduced processing time.</p>
+
+<h3>Data Accuracy</h3>
+<p>Leave balances are updated automatically, reducing the risk of human error.</p>
+
+<h3>Centralized Records</h3>
+<p>All leave requests are stored in SharePoint, enabling easy tracking and reporting.</p>
+
+<h3>Scalability</h3>
+<p>The system can easily support additional departments or policy changes.</p>
+
+</div>
+
+</body>
+</html>
