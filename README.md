@@ -88,6 +88,7 @@ Notification
   - Notify the employee of the approval or rejection outcome.
 
 ***Security & Permissions***
+
 Security and access control were implemented using Microsoft 365 best practices:
 
 SharePoint Permissions
