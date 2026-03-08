@@ -13,6 +13,7 @@ Additionally, HR teams often struggle to ensure that employees do not exceed the
 To address these issues, an automated and centralized leave management system was required to streamline request submission, validation, approval, and leave balance management.
 
 **Business Requirements**
+
 The system needed to satisfy the following operational requirements:
   - Employees must be able to submit leave requests through a user-friendly interface.
   - The system must calculate the number of leave days automatically based on the selected start and end dates.
@@ -24,10 +25,13 @@ The system needed to satisfy the following operational requirements:
   - HR and administrators must have visibility into leave requests and balances.
 
 **Solution Architecture**
+
 The solution was built using Microsoft Power Platform components integrated with SharePoint and Excel Online.
 
 **Components**
+
 **Power Apps**
+
 Provides the user interface for employees to submit leave requests.
   - Captures leave details such as:
   - Employee information
@@ -36,22 +40,23 @@ Provides the user interface for employees to submit leave requests.
   - End date
   - Reason for leave.
 
-**SharePoint**
-Stores the Leave Request list, which acts as the primary data repository for submitted requests.
-Provides structured data storage and integration with Power Automate.
+SharePoint
+  - Stores the Leave Request list, which acts as the primary data repository for submitted requests.
+  - Provides structured data storage and integration with Power Automate.
 
 **Excel Online (SharePoint Document Library)**
 Two Excel files are maintained:
-**Public Holiday Calendar**
-Stores official holidays used to exclude non-working days.
+  1. Public Holiday Calendar
+    - Stores official holidays used to exclude non-working days.
 
-**Employee Leave Balance**
-Contains employee leave entitlements and remaining balances.
+  2. Employee Leave Balance
+    - Contains employee leave entitlements and remaining balances.
 
-**Power Automate**
-Handles the workflow automation, validation logic, and leave balance updates.
+Power Automate
+  - Handles the workflow automation, validation logic, and leave balance updates.
 
 **Power Automate Logic (high-level)**
+
 The Power Automate workflow performs the following steps:
 
 Trigger
